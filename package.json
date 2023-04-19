@@ -1,0 +1,26 @@
+{
+    "name": "gbf-image",
+    "version": "0.0.0",
+    "description": "グラブルのスクショを加工するやつ",
+    "scripts": {
+        "dev": "vite --host",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "postcss": "^8.4.21",
+        "prettier": "^2.8.7",
+        "prettier-plugin-tailwindcss": "^0.2.6",
+        "tailwindcss": "^3.2.4",
+        "typescript": "^4.9.5",
+        "vite": "^4.1.1",
+        "vite-plugin-solid": "^2.5.0"
+    },
+    "dependencies": {
+        "clsx": "^1.2.1",
+        "solid-js": "^1.6.10",
+        "tailwind-merge": "^1.11.0"
+    }
+}
