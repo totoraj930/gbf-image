@@ -1,5 +1,9 @@
 import WeaponWorker from './weapon.worker?worker';
-import { TaskMessage, ResultMessage } from './weapon.worker';
+import {
+  TaskMessage,
+  ResultMessage,
+  getWeaponPixelData as gwpd,
+} from './weapon.worker';
 
 const worker = new WeaponWorker();
 
@@ -8,6 +12,9 @@ export function getWeaponPixelData(
   imageData: ImageData
 ): Promise<ResultMessage['data']> {
   return new Promise((resolve) => {
+    resolve(gwpd(imageData));
+    return;
+    // TODO: WebWorkerだとおちる
     const id = ++__id + '';
     const task: TaskMessage = {
       imageData,

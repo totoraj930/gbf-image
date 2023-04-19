@@ -1,5 +1,10 @@
 import CharacterWorker from './character.worker?worker';
-import { TaskMessage, ResultMessage } from './character.worker';
+import {
+  TaskMessage,
+  ResultMessage,
+  getCharacterPos as gcp,
+} from './character.worker';
+import { rgbaArrayToHsvArray } from '../utils';
 
 const worker = new CharacterWorker();
 
@@ -8,6 +13,11 @@ export function getCharacterPos(
   imageData: ImageData
 ): Promise<ResultMessage['data']> {
   return new Promise((resolve) => {
+    const hsv = rgbaArrayToHsvArray(imageData.data);
+    const { width: w, height: h } = imageData;
+    resolve(gcp(hsv, w, h));
+    return;
+    // TODO: WebWorkerだとおちる
     const id = ++__id + '';
     const task: TaskMessage = {
       imageData,
